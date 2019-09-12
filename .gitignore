@@ -1,0 +1,14 @@
+# OS
+
+# COMPOSER
+vendor/
+composer.lock
+
+# NPM
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# PROJECT
