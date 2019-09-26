@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace CommonApi;
@@ -20,7 +21,7 @@ abstract class App extends \Slim\App
     {
         parent::__construct(['config' => $this->getConfig($config)]);
         $container = $this->getContainer();
-        $container['resolve'] = static function (Container $c){
+        $container['resolve'] = static function (Container $c) {
             return new \InstanceResolver\ResolverClass($c);
         };
         $this->setDependencies($container);
@@ -38,8 +39,7 @@ abstract class App extends \Slim\App
      * @param \Slim\Container $container
      */
     protected function setDependencies(Container $container): void
-    {
-    }
+    { }
 
     /**
      * Méthode pour ajouter des handler à l'application
@@ -47,7 +47,7 @@ abstract class App extends \Slim\App
      */
     protected function setHandlers(Container $container): void
     {
-        $container['errorHandler'] = static function (ContainerInterface $c) {
+        $container['errorHandler'] = static function (container $c) {
             return static function ($request, $response, Throwable $exception) use ($c) {
                 /** @var ResponseFormatterInterface $formatter */
                 $formatter = $c->get(ResponseFormatterInterface::class);
@@ -68,7 +68,7 @@ abstract class App extends \Slim\App
             };
         };
 
-        $container['notFoundHandler'] = static function (ContainerInterface $c) {
+        $container['notFoundHandler'] = static function (container $c) {
             return static function ($request, $response) use ($c) {
                 /** @var ResponseFormatterInterface $formatter */
                 $formatter = $c->get(ResponseFormatterInterface::class);
@@ -82,8 +82,7 @@ abstract class App extends \Slim\App
      * @param \Slim\App $app
      */
     protected function setMiddleware(\Slim\App $app): void
-    {
-    }
+    { }
 
     /**
      * Enregistre un module
