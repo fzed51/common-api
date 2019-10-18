@@ -35,7 +35,7 @@ class ConfigToPdoFactory
             'charset'
         ];
         if (!self::testStructure($ctrl, $config)) {
-            throw new Exception\BadConfigException("La configuration de la base de donnée doit contenir 'provider',"
+            throw new Exception\BadConfigException("La configuration de la base de donnée doit contenir "
                 . implode(', ', $ctrl) . " même si ils sont vide.");
         }
         switch ($config['provider']) {
