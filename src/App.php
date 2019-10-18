@@ -48,7 +48,7 @@ abstract class App extends \Slim\App
     protected function setHandlers(Container $container): void
     {
         $container['errorHandler'] = static function (container $c) {
-            return static function ($request, $response, Throwable $exception) use ($c) {
+            return static function ($request, $response, \Throwable $exception) use ($c) {
                 /** @var ResponseFormatterInterface $formatter */
                 $formatter = $c->get(ResponseFormatterInterface::class);
                 $code = ($exception->getCode() >= 100 && $exception->getCode() < 600)
